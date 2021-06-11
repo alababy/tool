@@ -1,0 +1,77 @@
+<!-- clock.html -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <title></title>
+        <style>
+            *{
+                margin: 0px;
+                padding: 0px;
+            }
+            .clock{
+                width: 200px;
+                height: 200px;
+                border: 1px solid #000;
+                border-radius: 50%;
+                position: relative;
+                margin: 20px;
+                background-size: 100%;
+            }
+            .clock .hour{
+                width: 10px;
+                height: 70px;
+                background: orange;
+                position: absolute;
+                left: 95px;
+                top: 30px;
+                /*animation: sec 86400s infinite;*/
+            }
+            .clock .minute{
+                width: 6px;
+                height: 80px;
+                background: deepskyblue;
+                position: absolute;
+                left: 97px;
+                top: 20px;
+                /*animation: sec 3600s infinite;*/
+            }
+            .clock .second{
+                width: 2px;
+                height: 90px;
+                background: red;
+                position: absolute;
+                left: 99px;
+                top: 10px;
+                /*animation: sec 60s infinite;*/
+            }
+            @keyframes sec{
+                0%{transform-origin: center bottom;transform: rotate(0deg);}
+                100%{transform-origin: center bottom;transform: rotate(360deg);}
+            }
+        </style>
+    </head>
+    <body>
+        <div class="clock">
+            <div class="hour"></div>
+            <div class="minute"></div>
+            <div class="second"></div>
+        </div>
+    </body>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+        <!--这里调用jquery是为了选取元素方便而已，初学建议用dom选取元素-->
+    <script>
+        function fn(){
+        var myDate=new Date;
+        var h=myDate.getHours();
+        var m=myDate.getMinutes();
+        var s=myDate.getSeconds();
+        $(".clock .hour").css({"transform-origin":" center bottom","transform":"rotate("+30*h+"deg)"});
+        $(".clock .minute").css({"transform-origin":" center bottom","transform":"rotate("+6*m+"deg)"});
+        $(".clock .second").css({"transform-origin":" center bottom","transform":"rotate("+6*s+"deg)"});
+        }
+        fn();
+        // setInterval(fn,1000);
+    </script>
+</html>
